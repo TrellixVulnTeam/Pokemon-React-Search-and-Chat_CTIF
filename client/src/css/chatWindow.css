@@ -1,0 +1,57 @@
+.chatWindow {
+  position: absolute;
+  z-index: 100000000;
+  top: 0;
+  width: 100vw;
+  max-width: 400px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 2s;
+}
+
+.chatWindow__messages {
+  position: relative;
+  height: calc(100% - 50px);
+  background-color: rgb(238, 238, 238);
+
+  padding: 20px;
+}
+
+.chatWindow__submitArea {
+  height: 50px;
+  background-color: orange;
+  display: flex;
+}
+
+.chatWindow__submitArea__input {
+  height: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+
+  flex: 5;
+
+  padding: 20px;
+}
+
+.chatWindow__submitArea__submitButton {
+  flex: 1;
+  height: 100%;
+  background-color: rebeccapurple;
+  outline: none;
+  border: none;
+}
+
+.chatWindow__submitArea__submitButton:hover {
+  cursor: pointer;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.notConnected {
+}

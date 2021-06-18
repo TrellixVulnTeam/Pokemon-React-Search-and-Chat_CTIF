@@ -1,0 +1,36 @@
+@media (orientation: landscape) {
+  .searchInput {
+    z-index: 100000000;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    width: 15%;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    outline: none;
+    border: none;
+    font-family: inherit;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.152);
+  }
+}
+
+@media (orientation: portrait) {
+  .searchInput {
+    z-index: 100000000;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    width: 40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    outline: none;
+    border: none;
+    font-family: inherit;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.152);
+  }
+}
