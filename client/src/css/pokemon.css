@@ -80,7 +80,7 @@ body {
     color: white;
     width: 150%;
     text-shadow: 0 10px 10px rgba(99, 99, 99, 0.118);
-    z-index: 10000;
+    z-index: 10;
   }
 
   .pokemonImageArea__japaneseName {
@@ -102,7 +102,7 @@ body {
     font-size: 7vw;
     color: white;
     width: 150%;
-    z-index: 10000;
+    z-index: 10;
   }
 
   .pokemonImageArea__japaneseName {
@@ -117,7 +117,7 @@ body {
 @media (orientation: landscape) {
   .pokemonImageArea__pokemonImage {
     position: absolute;
-    width: 400px;
+    width: 500px;
     left: 25vw;
     bottom: 24%;
 
@@ -129,7 +129,7 @@ body {
 @media (orientation: landscape) and (max-width: 1150px) {
   .pokemonImageArea__pokemonImage {
     position: absolute;
-    width: 400px;
+    width: 500px;
     left: 15vw;
     bottom: 24%;
 
@@ -308,7 +308,7 @@ body {
 
 /* ============================================ Numbers ================================= */
 .numbers {
-  z-index: 1000000;
+  z-index: 10;
   position: absolute;
   bottom: 40px;
   left: 50%;

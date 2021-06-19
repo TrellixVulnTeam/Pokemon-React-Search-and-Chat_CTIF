@@ -6,15 +6,21 @@ import ChatReducer from "./ChatReducer";
 
 const ChatState = (props) => {
   const initialState = {
+    myUsername: "",
     messages: [],
     isShown: false,
   };
 
   const [state, dispatch] = useReducer(ChatReducer, initialState);
 
-  const onMessage = (message) => {
-    console.log("State recieved a new message" + message);
-    dispatch({ type: NEW_MESSAGE, payload: message });
+  const onMessage = (object) => {
+    dispatch({
+      type: NEW_MESSAGE,
+      payload: {
+        name: object.name || "none",
+        message: object.message || object,
+      },
+    });
   };
 
   const onChatResize = () => {
@@ -25,6 +31,7 @@ const ChatState = (props) => {
   return (
     <ChatContext.Provider
       value={{
+        myUsername: state.myUsername,
         messages: state.messages,
         isShown: state.isShown,
         onMessage,

@@ -9,7 +9,8 @@ export const ChatWindow = () => {
   const chatContext = useContext(ChatContext);
   const pokemonContext = useContext(PokemonContext);
 
-  const { messages, onMessage, isShown, onChatResize } = chatContext;
+  const { messages, onMessage, isShown, onChatResize, myUsername } =
+    chatContext;
   const { color } = pokemonContext;
 
   const [typing, setTyping] = useState([]);
@@ -23,7 +24,7 @@ export const ChatWindow = () => {
 
     // On recieving connecting  confirmaiton
     socketRef.current.on("connected", () => {
-      //! This is where we set that we are connectd - if not show a not connected screen
+      console.log("Connected");
       setConnected(true);
     });
 
@@ -31,21 +32,20 @@ export const ChatWindow = () => {
     socketRef.current.on("newMessage", (message) => {
       onMessage(message);
     });
-
-    // On demount close connection
-    return () => socketRef.current.disconnect();
-  }, [messages, color]);
+  }, []);
 
   // Handle when the user types
-  const handleTyping = () => {
-    setTyping(document.getElementById("chatInput").value);
+  const handleTyping = (e) => {
+    setTyping(e.target.value);
   };
 
   // Handle the submit button on the chat
   const handleChatSubmit = (e) => {
-    const input = document.getElementById("chatInput").value;
-    const message = { name: "Russell", message: input };
+    const input = typing;
+    const message = { name: "Me", message: input };
     socketRef.current.emit("message", message);
+    onMessage(message);
+    setTyping("");
   };
 
   const handleCloseWindow = () => {
@@ -57,15 +57,35 @@ export const ChatWindow = () => {
       className="chatWindow"
       style={isShown ? { left: "0" } : { left: "-150%" }}
     >
-      <div className="notConnected">
-        {/* Show an opaque scree with a cross or message saying cannot connect please refresh or wait..*/}
+      <div
+        className="notConnected"
+        style={connceted ? { display: "none" } : { display: "initial" }}
+      >
+        <p>Not Connected..</p>
       </div>
       <div className="chatWindow__messages">
-        {messages.map((message) => {
+        {messages.map((mess) => {
           return (
-            <div className="message">
-              <p>{message.name}</p>
-              <p>{message.message}</p>
+            <div
+              className="message"
+              key={Math.random() * 100}
+              style={
+                mess.name === "Me"
+                  ? {
+                      marginRight: "auto",
+                      marginLeft: 0,
+                      backgroundColor: `rgba(${color[0]}, ${color[1] + 15}, ${
+                        color[2] + 70
+                      })`,
+                    }
+                  : {
+                      marginRight: 0,
+                      marginLeft: "auto",
+                      backgroundColor: `rgba(${color[0]}, ${color[1]}, ${color[2]})`,
+                    }
+              }
+            >
+              <p>{mess.message}</p>
             </div>
           );
         })}
@@ -80,11 +100,25 @@ export const ChatWindow = () => {
           className="chatWindow__submitArea__input"
           id={"chatInput"}
           onChange={handleTyping}
+          value={typing}
         />
         <button
           className="chatWindow__submitArea__submitButton"
           onClick={handleChatSubmit}
-        ></button>
+        >
+          <i
+            style={
+              color
+                ? {
+                    color: `rgba(${color[0]}, ${color[1] + 15}, ${
+                      color[2] + 70
+                    })`,
+                  }
+                : { color: "Black" }
+            }
+            className="fas fa-paper-plane"
+          ></i>
+        </button>
       </div>
     </div>
   );

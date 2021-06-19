@@ -16,12 +16,15 @@ const startSocket = (app) => {
 
   // //! Manage socket io
   io.on("connection", (socket) => {
-    console.log("A user connected");
+    console.log("Someone connected");
     socket.emit("connected");
 
     //? Send message to all room users..
-    socket.on("message", (message) => {
-      socket.emit("newMessage", message);
+    socket.on("message", (object) => {
+      console.log("sending message to client");
+      const message = object.message;
+      console.log(message);
+      socket.broadcast.emit("newMessage", message);
     });
   });
 };
