@@ -20,7 +20,7 @@ Mobile responsive!
 - [Contact](#contact)
 
 ## Design File
-Designed created using Adobe XD, inspired by the dribble art: https://dribbble.com/shots/6175056-Pok-dex.
+Designed using Adobe XD, inspired by the dribble art: https://dribbble.com/shots/6175056-Pok-dex.
 
 ![alt text](https://github.com/RussellCarey/Pokemon-React-Search-and-Chat/blob/master/client/public/design.png)
 
