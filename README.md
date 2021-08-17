@@ -1,5 +1,5 @@
 # Pokemon search and chat
-A React and socket.io pokemon search app with chatroom functionality.
+A PROTOTYPE / practice React and Socket.io Pokemon search app with chatroom functionality.
 
 Allows users to search information for their favourite pokemon by their number or name.
 Also, users can chat to eachother using the toggle-able chat area.
